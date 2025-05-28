@@ -1,6 +1,7 @@
 from representation import AdjacencyList
 from hamilton_gen import Hamilton
 from non_hamilton_gen import Non_Hamilton
+from hamiltonian_cycle import hamiltonian_cycle
 import sys
 
 
@@ -28,12 +29,14 @@ def main():
         u, v = edge
         graph.add(u, v)
 
-    # sys.stdin = open("/dev/tty")
+    sys.stdin = open("/dev/tty")
 
     while True:
         cmd = input("action> ").strip().lower()
         if cmd == "print":
             graph.display()
+        if cmd == "hamilton":
+            print(f"Hammilton cycle: {hamiltonian_cycle(graph)}")
         elif cmd == "exit":
             print("Koniec programu")
             break

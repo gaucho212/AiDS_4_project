@@ -7,6 +7,7 @@ class Hamilton(AdjacencyList):
         edges = []
         nodes_degree = {i: 0 for i in range(1, nodes + 1)}
 
+        # Generowanie cyklu Hamiltona
         vertices = list(range(1, nodes + 1))
         random.shuffle(vertices)
         for i in range(len(vertices) - 1):
@@ -20,9 +21,11 @@ class Hamilton(AdjacencyList):
         nodes_degree[v] += 1
         edges.append((u, v))
 
+        # Obliczanie maksymalnej liczby krawędzi i docelowej liczby krawędzi
         max_edges = nodes * (nodes - 1) // 2
         target_edges = int(max_edges * (saturation / 100))
 
+        # Lista wszystkich możliwych krawędzi
         all_possible_edges = [
             (i, j) for i in range(1, nodes + 1) for j in range(i + 1, nodes + 1)
         ]
@@ -53,12 +56,13 @@ class Hamilton(AdjacencyList):
                     break
             else:
                 for u, v in all_possible_edges[:]:
+                    if len(edges) >= target_edges:
+                        break
                     edges.append((u, v))
                     nodes_degree[u] += 1
                     nodes_degree[v] += 1
                     all_possible_edges.remove((u, v))
-                if (v, u) in all_possible_edges:
-                    all_possible_edges.remove((v, u))
-                    break
+                    if (v, u) in all_possible_edges:
+                        all_possible_edges.remove((v, u))
 
         return edges
