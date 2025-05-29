@@ -1,4 +1,4 @@
-def hamiltonian_cycle(graph):
+def hamilton_cycle(graph):
     n = graph.size
     visited = [False] * (n + 1)
     path = [-1] * n

@@ -1,7 +1,8 @@
 from representation import AdjacencyList
 from hamilton_gen import Hamilton
 from non_hamilton_gen import Non_Hamilton
-from hamiltonian_cycle import hamiltonian_cycle
+from hamilton_cycle import hamilton_cycle
+from euler_cycle import fleury
 import sys
 
 
@@ -20,9 +21,9 @@ def main():
         graph = AdjacencyList(nodes)
 
     else:
-        nodes = 2
+        nodes = 4
         saturation = 70
-        edges = [(1, 2)]
+        edges = [(1, 2), (2, 3), (3, 4), (4, 1)]
         graph = AdjacencyList(nodes)
 
     for edge in edges:
@@ -36,7 +37,11 @@ def main():
         if cmd == "print":
             graph.display()
         if cmd == "hamilton":
-            print(f"Hammilton cycle: {hamiltonian_cycle(graph)}")
+            print(f"Hammilton cycle: {hamilton_cycle(graph)}")
+        elif cmd == "euler":
+            start = int(input("insert starting node> "))
+            print(f"Euler cycle: {fleury(graph, start)}")
+
         elif cmd == "exit":
             print("Koniec programu")
             break

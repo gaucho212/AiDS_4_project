@@ -5,6 +5,7 @@ class AdjacencyList:
 
     def add(self, u, v):
         self.adj_list[u].append(v)
+        self.adj_list[v].append(u)
 
     def display(self):
         for i in range(1, len(self.adj_list)):
