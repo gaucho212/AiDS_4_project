@@ -30,7 +30,6 @@ def is_bridge(u, v, adj_list, size):
     adj_list[u].append(v)
     adj_list[v].append(u)
 
-    # Jeśli liczba osiągalnych wierzchołków zmniejszyła się, krawędź jest mostem
     return count1 > count2
 
 
@@ -67,7 +66,7 @@ def is_connected(graph):
 
 def fleury(graph, start_vertex):
 
-    # Sprawdź, czy graf ma cykl Eulera
+    # Sprawdza, czy graf ma cykl Eulera
     for vertex in range(1, graph.size + 1):
         degree = len(graph.adj_list[vertex])
         if degree % 2 != 0:
