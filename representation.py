@@ -1,3 +1,11 @@
+# Prof's Review: I would explicitly declare an abstract graph representation with following functions:
+# add_edge()
+# check_edge()
+# get_next_vertices() -> Best if it returns an GraphIterator class object
+# print_graph()
+# Zasada Dependency Inversion Principle from SOLID
+
+
 class AdjacencyList:
     def __init__(self, size):
         self.size = size

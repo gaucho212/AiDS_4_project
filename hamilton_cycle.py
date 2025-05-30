@@ -10,7 +10,9 @@ def hamilton_cycle(graph):
         visited_count += 1
 
         # Iteracja po sąsiadach wierzchołka v
-        for neighbor in graph.adj_list[v]:
+        for neighbor in graph.adj_list[
+            v
+        ]:  # Prof's Review: grap.get_next_vertices() - create an abstraction to satisfy rule Dependency Inversion Principle from SOLID
             # Jeśli odwiedzono wszystkie wierzchołki i wraca do startowego, mamy cykl
             if neighbor == start_vertex and visited_count == n + 1:
                 return True
