@@ -9,12 +9,12 @@ def generate_non_hamilton(nodes):
     for i in range(len(vertices) - 2):
         u, v = vertices[i], vertices[i + 1]
         edges.append((u, v))
-
+    # Izolacja jednego wierzchołka
     disconnected_vertex = vertices[-1]
 
     max_edges = nodes * (nodes - 1) // 2
     target_edges = int(max_edges * 0.5)
-
+    # Dodawanie krawędzi, a do osiągnięcia zadanej saturacji
     all_possible_edges = [
         (i, j) for i in range(1, nodes + 1) for j in range(i + 1, nodes + 1)
     ]

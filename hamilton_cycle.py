@@ -6,12 +6,12 @@ def hamilton_cycle(graph):
 
     def hamiltonian(v, visited_count):
         visited[v] = True
-        path[visited_count - 1] = v  # Dodaj wierzchołek do ścieżki
+        path[visited_count - 1] = v
         visited_count += 1
 
         # Iteracja po sąsiadach wierzchołka v
         for neighbor in graph.adj_list[v]:
-            # Jeśli odwiedzono wszystkie wierzchołki i wracamy do startowego, mamy cykl
+            # Jeśli odwiedzono wszystkie wierzchołki i wraca do startowego, mamy cykl
             if neighbor == start_vertex and visited_count == n + 1:
                 return True
             if not visited[neighbor]:
@@ -20,12 +20,12 @@ def hamilton_cycle(graph):
 
         # Cofanie (backtracking)
         visited[v] = False
-        path[visited_count - 2] = -1  # Usuń wierzchołek ze ścieżki
+        path[visited_count - 2] = -1
         return False
 
     # Rozpoczęcie przeszukiwania
     if hamiltonian(start_vertex, 1):
-        path.append(start_vertex)  # Zamknij cykl, dodając wierzchołek początkowy
+        path.append(start_vertex)
         return path
     else:
         return None
