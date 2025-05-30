@@ -1,23 +1,22 @@
 from representation import AdjacencyList
-from hamilton_gen import Hamilton
-from non_hamilton_gen import Non_Hamilton
+from hamilton_gen import generate_hamilton
+from non_hamilton_gen import generate_non_hamilton
 from hamilton_cycle import hamilton_cycle
 from euler_cycle import fleury
 import sys
 
 
 def main():
-    is_heredoc = sys.stdin.isatty()
     if "--hamilton" in sys.argv:
         nodes = int(input("Nodes> "))
         saturation = int(input("Saturation(30 or 70)> "))
-        edges = Hamilton.generate(nodes, saturation)
+        edges = generate_hamilton(nodes, saturation)
         graph = AdjacencyList(nodes)
         print(edges)
 
     elif "--non-hamilton" in sys.argv:
         nodes = int(input("Nodes> "))
-        edges = Non_Hamilton.generate(nodes)
+        edges = generate_non_hamilton(nodes)
         graph = AdjacencyList(nodes)
 
     else:
@@ -30,7 +29,7 @@ def main():
         u, v = edge
         graph.add(u, v)
 
-    sys.stdin = open("/dev/tty")
+    # sys.stdin = open("/dev/tty")
 
     while True:
         cmd = input("action> ").strip().lower()
@@ -39,7 +38,7 @@ def main():
         if cmd == "hamilton":
             print(f"Hammilton cycle: {hamilton_cycle(graph)}")
         elif cmd == "euler":
-            start = int(input("insert starting node> "))
+            start = 1
             print(f"Euler cycle: {fleury(graph, start)}")
 
         elif cmd == "exit":
