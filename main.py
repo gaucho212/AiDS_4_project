@@ -5,7 +5,6 @@ from non_hamilton_gen import generate_non_hamilton
 from hamilton_cycle import hamilton_cycle
 from euler_cycle import fleury
 import sys
-import argparse
 
 
 def main():
