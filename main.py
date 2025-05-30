@@ -1,9 +1,11 @@
+from export import export_tikz
 from representation import AdjacencyList
 from hamilton_gen import generate_hamilton
 from non_hamilton_gen import generate_non_hamilton
 from hamilton_cycle import hamilton_cycle
 from euler_cycle import fleury
 import sys
+import argparse
 
 
 def main():
@@ -44,6 +46,8 @@ def main():
         elif cmd == "exit":
             print("Koniec programu")
             break
+        elif cmd == "export":
+            export_tikz(edges, nodes)
 
 
 if __name__ == "__main__":
