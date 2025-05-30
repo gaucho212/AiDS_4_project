@@ -1,9 +1,11 @@
+from export import export_tikz
 from representation import AdjacencyList
 from hamilton_gen import generate_hamilton
 from non_hamilton_gen import generate_non_hamilton
 from hamilton_cycle import hamilton_cycle
 from euler_cycle import fleury
 import sys
+import argparse
 
 
 def main():
@@ -81,6 +83,8 @@ def main():
             elif cmd == "euler":
                 start = 1
                 print(f"Euler cycle: {fleury(graph, start)}")
+            elif cmd == "export":
+                export_tikz(edges, nodes)
             elif cmd == "exit":
                 if not is_heredoc:
                     print("Exiting..")
